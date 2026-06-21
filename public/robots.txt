@@ -1,0 +1,11 @@
+# Robots.txt pour Portfolio Cheick Issa San Kara
+
+# Autoriser tous les robots
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://issasankara.com/sitemap.xml
+
+# Crawler-delay (optionnel)
+Crawl-delay: 1

@@ -1,26 +1,207 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,900;1,400;1,900&family=Schibsted+Grotesk:wght@400;500;700&family=Martian+Mono:wght@400;500;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Soft Brutalism Palette - Violet Doux & Gris Élégants */
+
+  /* Primary - Violet Doux */
+  --violet-soft: #9D8FC9;
+  --violet-dark: #7B6BA8;
+  --violet-light: #B8ADDB;
+
+  /* Accent - Violet Variations */
+  --violet-muted: #8B7FB8;
+  --violet-pale: #D4CEE8;
+
+  /* Neutral - Gris Doux */
+  --gray-soft: #9CA3AF;
+  --gray-medium: #6B7280;
+  --gray-light: #D1D5DB;
+
+  /* Base - Noir Doux & Blanc Grisé */
+  --soft-black: #2B2D31;
+  --soft-white: #F5F5F7;
+  --dust-white: #E8E8EA;
+
+  /* Semantic Mappings */
+  --background: var(--soft-white);
+  --foreground: var(--soft-black);
+
+  /* Legacy names for compatibility */
+  --terracotta: var(--violet-soft);
+  --rust: var(--violet-dark);
+  --clay: var(--violet-light);
+  --indigo-ink: var(--soft-black);
+  --concrete: var(--soft-white);
+  --shadow: var(--soft-black);
+  --dust: var(--gray-soft);
+  --forest: var(--violet-muted);
+  --gold-thread: var(--violet-pale);
 }
 
 @theme inline {
+  /* Soft Brutalism Color System */
+  --color-violet-soft: var(--violet-soft);
+  --color-violet-dark: var(--violet-dark);
+  --color-violet-light: var(--violet-light);
+  --color-violet-muted: var(--violet-muted);
+  --color-violet-pale: var(--violet-pale);
+
+  --color-gray-soft: var(--gray-soft);
+  --color-gray-medium: var(--gray-medium);
+  --color-gray-light: var(--gray-light);
+
+  --color-soft-black: var(--soft-black);
+  --color-soft-white: var(--soft-white);
+  --color-dust-white: var(--dust-white);
+
+  /* Legacy compatibility */
+  --color-terracotta: var(--violet-soft);
+  --color-rust: var(--violet-dark);
+  --color-clay: var(--violet-light);
+  --color-indigo-ink: var(--soft-black);
+  --color-concrete: var(--soft-white);
+  --color-shadow: var(--soft-black);
+  --color-dust: var(--gray-soft);
+  --color-forest: var(--violet-muted);
+  --color-gold-thread: var(--violet-pale);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Typography - Distinctive Fonts */
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-mono: 'Martian Mono', 'Courier New', monospace;
+
+  /* Brutalist Shadows - NO BLUR */
+  --shadow-brutal: 16px 16px 0px 0px var(--soft-black);
+  --shadow-brutal-lg: 20px 20px 0px 0px var(--soft-black);
+  --shadow-brutal-sm: 8px 8px 0px 0px var(--soft-black);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Kente Grid Background Pattern */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      var(--dust) 60px,
+      var(--dust) 64px
+    );
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Selection personnalisée */
+::selection {
+  background-color: var(--violet-soft);
+  color: var(--soft-white);
+}
+
+/* Focus States - Brutalist */
+*:focus-visible {
+  outline: 4px solid var(--violet-soft);
+  outline-offset: 2px;
+}
+
+/* Brutal Animations */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shake-horizontal {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* Utility Classes */
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-shake {
+  animation: shake-horizontal 0.4s ease-in-out 3;
+}
+
+/* Brutalist Shadow Utilities */
+.shadow-brutal {
+  box-shadow: var(--shadow-brutal);
+}
+
+.shadow-brutal-lg {
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.shadow-brutal-sm {
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+/* Concrete Texture Overlay (Optional Enhancement) */
+.texture-concrete {
+  position: relative;
+}
+
+.texture-concrete::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: multiply;
 }

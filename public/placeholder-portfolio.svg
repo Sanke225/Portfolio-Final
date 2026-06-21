@@ -1,0 +1,43 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient vert-violet -->
+  <defs>
+    <linearGradient id="portfolio-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00A651;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#portfolio-gradient)"/>
+
+  <!-- Motifs décoratifs -->
+  <circle cx="100" cy="350" r="75" fill="white" opacity="0.1"/>
+  <circle cx="700" cy="120" r="85" fill="white" opacity="0.1"/>
+  <rect x="150" y="100" width="140" height="140" fill="white" opacity="0.05" rx="20"/>
+
+  <!-- Écran de code stylisé -->
+  <g transform="translate(250, 120)">
+    <!-- Fenêtre de navigateur -->
+    <rect x="0" y="0" width="300" height="200" rx="10" fill="white" opacity="0.9"/>
+
+    <!-- Barre d'adresse -->
+    <rect x="0" y="0" width="300" height="35" rx="10" fill="#1F2937" opacity="0.9"/>
+    <circle cx="15" cy="17.5" r="5" fill="#FF5F56"/>
+    <circle cx="30" cy="17.5" r="5" fill="#FFBD2E"/>
+    <circle cx="45" cy="17.5" r="5" fill="#27C93F"/>
+
+    <!-- Lignes de code -->
+    <line x1="20" y1="60" x2="120" y2="60" stroke="#8B5CF6" stroke-width="4" opacity="0.8"/>
+    <line x1="30" y1="80" x2="180" y2="80" stroke="#00A651" stroke-width="4" opacity="0.8"/>
+    <line x1="30" y1="100" x2="140" y2="100" stroke="#8B5CF6" stroke-width="4" opacity="0.8"/>
+    <line x1="20" y1="120" x2="200" y2="120" stroke="#00A651" stroke-width="4" opacity="0.8"/>
+    <line x1="30" y1="140" x2="160" y2="140" stroke="#8B5CF6" stroke-width="4" opacity="0.8"/>
+    <line x1="30" y1="160" x2="100" y2="160" stroke="#00A651" stroke-width="4" opacity="0.8"/>
+
+    <!-- Symbole </> -->
+    <text x="230" y="130" font-family="monospace" font-size="48" font-weight="bold" fill="#8B5CF6" opacity="0.5">&lt;/&gt;</text>
+  </g>
+
+  <!-- Texte -->
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">Portfolio Personnel</text>
+</svg>
