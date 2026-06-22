@@ -1,9 +1,3 @@
-/**
- * Skills Section - Abidjan Kinetic
- * Brutalist cards with geometric icons (NO emoji)
- * Heavy shadows, sharp edges, terracotta accents
- */
-
 'use client';
 
 import React from 'react';
@@ -167,7 +161,7 @@ const SkillsSection: React.FC = () => {
           className="mt-20 border-l-4 border-terracotta pl-6"
         >
           <p className="font-mono text-sm text-dust">
-            APPRENTISSAGE_CONTINU = true; // Toujours à la pointe
+            // Toujours à la pointe
           </p>
         </motion.div>
       </div>

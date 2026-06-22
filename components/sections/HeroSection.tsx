@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Code, ArrowRight } from "lucide-react";
+import { StatsBar, TechStackCarousel, ScrollIndicator } from "@/components/hero";
 
 /**
  * Hero Section - Abidjan Kinetic Aesthetic
@@ -98,19 +99,39 @@ export default function HeroSection() {
           </Link>
         </motion.div>
 
+        {/* StatsBar - Metrics Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-3"
+        >
+          <StatsBar />
+        </motion.div>
+
+        {/* TechStackCarousel - Technologies Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className=""
+        >
+          <TechStackCarousel />
+        </motion.div>
+
         {/* Status Badge - Bottom Left */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute bottom-12 left-6 lg:left-8"
+          className="absolute bottom-19 left-6 lg:left-8"
         >
-          <div className="flex items-center gap-3 border-2 border-forest bg-concrete px-4 py-3 font-mono text-xs">
+          <div className="flex items-center gap-3 border-2 border-forest bg-concrete px-4 font-mono text-xs">
             <span className="relative flex h-3 w-3">
               <span className="absolute inline-flex h-full w-full animate-ping bg-forest opacity-75" />
               <span className="relative inline-flex h-3 w-3 bg-forest" />
             </span>
-            <span className="text-shadow font-medium">DISPONIBLE / ABIDJAN 5.3600°N</span>
+            <span className="text-shadow font-medium">DISPONIBLE / ABIDJAN 225</span>
           </div>
         </motion.div>
 
@@ -130,6 +151,9 @@ export default function HeroSection() {
           </div>
         </motion.div>
       </div>
+
+      {/* ScrollIndicator - Fixed Bottom */}
+      <ScrollIndicator />
     </section>
   );
 }

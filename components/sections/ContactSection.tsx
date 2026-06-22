@@ -156,11 +156,28 @@ export default function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      // Simuler un envoi (délai de 2 secondes)
-      // TODO: Remplacer par un appel API réel plus tard
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Appel à l'API Route de contact
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Log des données pour démo
+      // Analyser la réponse JSON
+      const data = await response.json();
+
+      // Vérifier si la requête a réussi
+      if (!response.ok) {
+        // En cas d'erreur de validation, afficher les erreurs spécifiques
+        if (data.errors) {
+          setErrors(data.errors);
+        }
+        throw new Error(data.message || "Erreur lors de l'envoi du message");
+      }
+
+      // Log des données pour confirmation
       console.log("Formulaire soumis avec succès :", formData);
 
       // Afficher le message de succès
@@ -180,7 +197,17 @@ export default function ContactSection() {
         setIsSuccess(false);
       }, 5000);
     } catch (error) {
+      // Gestion des erreurs
       console.error("Erreur lors de l'envoi du formulaire :", error);
+
+      // Afficher une erreur générale si aucune erreur spécifique n'est disponible
+      if (!Object.keys(errors).length) {
+        setErrors({
+          message: error instanceof Error
+            ? error.message
+            : "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.",
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -456,7 +483,7 @@ export default function ContactSection() {
                     href="mailto:admin@syntarasoft.net"
                     className="text-primary transition-colors hover:text-primary-dark hover:underline"
                   >
-                    admin@syntarasoft.net
+                    admin@san-kara.site
                   </a>
                 </div>
               </div>
