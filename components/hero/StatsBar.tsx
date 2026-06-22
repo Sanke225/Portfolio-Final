@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { useTranslation } from "@/lib/i18n";
 
 /**
  * Stats Bar - Brutalist Abidjan
@@ -87,11 +88,13 @@ function StatCard({ value, label, delay }: StatCardProps) {
 }
 
 export default function StatsBar() {
+  const { t } = useTranslation();
+
   const stats = [
-    { value: "12+", label: "PROJETS LIVRÉS" },
-    { value: "8+", label: "CLIENTS SATISFAITS" },
-    { value: "3", label: "ANNÉES D'EXPÉRIENCE" },
-    { value: "100%", label: "FREELANCE" }
+    { value: t('stats.projectsValue'), label: t('stats.projectsLabel') },
+    { value: t('stats.clientsValue'), label: t('stats.clientsLabel') },
+    { value: t('stats.experienceValue'), label: t('stats.experienceLabel') },
+    { value: t('stats.freelanceValue'), label: t('stats.freelanceLabel') }
   ];
 
   return (

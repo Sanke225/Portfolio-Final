@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,900;1,400;1,900&family=Schibsted+Grotesk:wght@400;500;700&family=Martian+Mono:wght@400;500;700&display=swap');
 
 :root {
   /* Soft Brutalism Palette - Violet Doux & Gris Élégants */
@@ -23,7 +22,7 @@
   --soft-white: #F5F5F7;
   --dust-white: #E8E8EA;
 
-  /* Semantic Mappings */
+  /* Semantic Mappings - Light Mode */
   --background: var(--soft-white);
   --foreground: var(--soft-black);
 
@@ -35,6 +34,37 @@
   --concrete: var(--soft-white);
   --shadow: var(--soft-black);
   --dust: var(--gray-soft);
+  --forest: var(--violet-muted);
+  --gold-thread: var(--violet-pale);
+}
+
+.dark {
+  /* Dark Mode - Couleurs inversées avec violet toujours en accent */
+
+  /* Base Dark */
+  --soft-black: #F5F5F7;
+  --soft-white: #0f0f0f;
+  --dust-white: #1a1a1a;
+
+  /* Neutral Dark - Gris inversés */
+  --gray-soft: #a3a3a3;
+  --gray-medium: #9CA3AF;
+  --gray-light: #6B7280;
+
+  /* Semantic Mappings - Dark Mode */
+  --background: #0f0f0f;
+  --foreground: #f5f5f5;
+
+  /* Legacy names - Dark Mode */
+  --concrete: #0f0f0f;
+  --shadow: #f5f5f5;
+  --dust: #a3a3a3;
+  --indigo-ink: #f5f5f5;
+
+  /* Violet reste identique pour l'accent */
+  --terracotta: var(--violet-soft);
+  --rust: var(--violet-dark);
+  --clay: var(--violet-light);
   --forest: var(--violet-muted);
   --gold-thread: var(--violet-pale);
 }

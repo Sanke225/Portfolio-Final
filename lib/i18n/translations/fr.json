@@ -1,0 +1,318 @@
+{
+  "common": {
+    "language": "Langue",
+    "theme": "Thème",
+    "available": "DISPONIBLE",
+    "location": "ABIDJAN 225",
+    "viewMore": "VOIR_PLUS",
+    "loading": "Chargement...",
+    "required": "requis"
+  },
+  "header": {
+    "logo": "<ISSA_SANKARA/>",
+    "nav": {
+      "home": "Accueil",
+      "about": "À Propos",
+      "skills": "Compétences",
+      "services": "Services",
+      "projects": "Projets",
+      "contact": "Contact"
+    },
+    "aria": {
+      "toggleMenu": "Toggle menu",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  },
+  "hero": {
+    "badge": "DÉVELOPPEUR FULLSTACK - IA",
+    "name": "Cheick Issa",
+    "subtitle": "Je transforme vos idées en",
+    "subtitleBold": "solutions digitales intelligentes et automatisées",
+    "description": "Je conçois des expériences web modernes qui fusionnent développement technique, design intentionnel et automatisation IA.",
+    "cta": {
+      "projects": "VOIR MES PROJETS",
+      "contact": "ME CONTACTER"
+    },
+    "status": "DISPONIBLE / ABIDJAN 225",
+    "scroll": "EXPLORER"
+  },
+  "stats": {
+    "projectsValue": "12+",
+    "projectsLabel": "PROJETS LIVRÉS",
+    "clientsValue": "8+",
+    "clientsLabel": "CLIENTS SATISFAITS",
+    "experienceValue": "3",
+    "experienceLabel": "ANNÉES D'EXPÉRIENCE",
+    "freelanceValue": "100%",
+    "freelanceLabel": "FREELANCE"
+  },
+  "about": {
+    "sectionNumber": "01",
+    "title": "Mon Parcours",
+    "subtitle": "3 ans en design textile, puis développeur IA - Fullstack spécialisé en automatisation intelligente",
+    "paragraphs": {
+      "intro": "Après 3 ans dans le design textile, j'ai découvert ma véritable passion :",
+      "introBold": "le développement web et l'intelligence artificielle",
+      "introEnd": "Cette reconversion m'a permis de transférer ma créativité, mon sens esthétique et mon attention aux détails vers la création d'expériences numériques à fort impact.",
+      "training": "Formé via deux bootcamps intensifs à GoMyCode Rivera (Abidjan), je combine aujourd'hui compétences techniques fullstack et expertise IA pour concevoir des solutions web modernes, automatisées et intelligentes. De la conception au déploiement, je transforme des processus complexes en interfaces fluides et performantes."
+    },
+    "statsBoxes": {
+      "codeYears": "2",
+      "codeLabel": "ANS CODE",
+      "projects": "10+",
+      "projectsLabel": "PROJETS",
+      "skills": "40+",
+      "skillsLabel": "SKILLS"
+    },
+    "timeline": {
+      "2024": {
+        "year": "2024",
+        "title": "Le Déclic",
+        "description": "Reconversion après 3 ans en design textile. Première ligne de code, passion immédiate."
+      },
+      "2025": {
+        "year": "2025",
+        "title": "Formation Intensive",
+        "description": "Bootcamp GoMyCode Rivera (Abidjan) : HTML, CSS, JavaScript, React, Firebase. Certification obtenue."
+      },
+      "2026a": {
+        "year": "2026",
+        "title": "Spécialisation IA & Automatisation",
+        "description": "Bootcamp Fullstack & IA à GoMyCode. Agents IA, workflows N8N, intégrations APIs. Certification obtenue."
+      },
+      "2026b": {
+        "year": "2026-2027",
+        "title": "Freelance IA - Fullstack",
+        "description": "Expertise IA générative, développement web moderne (Next.js, TypeScript), automatisation de processus métier."
+      }
+    },
+    "techStack": {
+      "react": "React",
+      "nextjs": "Next.js",
+      "nodejs": "Node.js",
+      "firebase": "Firebase",
+      "aiAuto": "IA & Auto"
+    },
+    "comment": "// Toujours à la pointe"
+  },
+  "skills": {
+    "sectionNumber": "02",
+    "title": "Compétences",
+    "subtitle": "Stack technique moderne combinant développement fullstack, intelligence artificielle et automatisation",
+    "categories": {
+      "frontend": {
+        "title": "Frontend",
+        "skills": [
+          "HTML5 & CSS3",
+          "JavaScript ES6+",
+          "TypeScript",
+          "React.js",
+          "Next.js 15",
+          "Tailwind CSS",
+          "Shadcn/ui",
+          "DaisyUI",
+          "Framer Motion"
+        ]
+      },
+      "backend": {
+        "title": "Backend & BaaS",
+        "skills": [
+          "Node.js",
+          "Firebase",
+          "Firestore",
+          "Supabase",
+          "MongoDB Atlas",
+          "APIs REST",
+          "Webhooks",
+          "Intégrations Paiement"
+        ]
+      },
+      "ai": {
+        "title": "IA & Automatisation",
+        "skills": [
+          "Agents IA Conversationnels",
+          "APIs IA (GPT, Claude, Gemini, Grok)",
+          "N8N Workflows",
+          "Prompt Engineering",
+          "Automatisation Métier",
+          "Design IA Génératif"
+        ]
+      },
+      "tools": {
+        "title": "Outils & Design",
+        "skills": [
+          "Git & GitHub",
+          "Figma",
+          "UI/UX Design",
+          "Design Systems",
+          "Responsive Design",
+          "Claude Code & Cursor"
+        ]
+      }
+    },
+    "comment": "// Toujours à la pointe"
+  },
+  "services": {
+    "sectionNumber": "03",
+    "title": "Services",
+    "subtitle": "Solutions techniques sur mesure alliant développement web moderne, IA générative et automatisation intelligente",
+    "items": [
+      {
+        "title": "Sites Vitrines & Landing Pages",
+        "description": "Sites ultra-performants (Next.js 15, TypeScript) avec animations fluides (Framer Motion), optimisation SEO avancée et temps de chargement < 2s. Design responsive et accessible (WCAG)."
+      },
+      {
+        "title": "Applications Web Fullstack",
+        "description": "Apps React/Next.js avec authentification sécurisée (Firebase Auth), bases de données temps réel (Firestore, Supabase), intégrations paiement (Stripe) et déploiement automatisé."
+      },
+      {
+        "title": "Agents IA Conversationnels",
+        "description": "Assistants IA personnalisés (GPT-4, Claude, Gemini) pour automatiser service client, génération de contenu, analyse de données. Intégration APIs IA et traitement du langage naturel."
+      },
+      {
+        "title": "Automatisation & Workflows N8N",
+        "description": "Automatisation de processus métier complexes : workflows N8N, intégrations multi-APIs, webhooks, triggers personnalisés. Gain de temps et réduction d'erreurs humaines."
+      },
+      {
+        "title": "Design UI/UX & Prototypage",
+        "description": "Interfaces modernes et intuitives conçues sur Figma. Design systems cohérents (Shadcn/ui, DaisyUI, Tailwind), prototypes interactifs et tests utilisateurs."
+      },
+      {
+        "title": "Applications Mobiles (APK)",
+        "description": "Développement d'applications Android natives et cross-platform (React Native). Interface fluide, optimisation performances et intégration services backend (Firebase, API REST)."
+      }
+    ],
+    "cta": {
+      "text": "Discutons-en !",
+      "button": "DÉMARRER UN PROJET"
+    }
+  },
+  "projects": {
+    "title": "Mes",
+    "titleAccent": "Projets",
+    "subtitle": "Une sélection de projets qui démontrent mes compétences en développement web moderne, de la conception à la mise en production.",
+    "items": [
+      {
+        "title": "Landkit",
+        "description": "Landing page moderne et responsive avec animations fluides et design premium. Optimisée pour la conversion et le SEO.",
+        "tags": ["HTML5", "CSS3", "JavaScript", "Animations"],
+        "inDevelopment": true,
+        "buttonUnavailable": "Bientôt disponible",
+        "buttonDemo": "Code source",
+        "buttonGithub": "GitHub",
+        "imageAlt": "Aperçu du projet Landkit"
+      },
+      {
+        "title": "FlowFund",
+        "description": "Plateforme de cagnotte en ligne collaborative et sécurisée. Paiements Stripe, authentification Firebase et dashboard temps réel.",
+        "tags": ["Next.js", "Firebase", "Stripe", "React"],
+        "inDevelopment": true,
+        "buttonUnavailable": "Bientôt disponible",
+        "buttonDemo": "Code source",
+        "buttonGithub": "GitHub",
+        "imageAlt": "Aperçu du projet FlowFund"
+      },
+      {
+        "title": "Agent IA Service Client",
+        "description": "Assistant IA conversationnel intelligent pour e-commerce. Intégration n8n, traitement du langage naturel et réponses contextuelles.",
+        "tags": ["IA", "n8n", "APIs", "Automatisation"],
+        "inDevelopment": true,
+        "buttonUnavailable": "Bientôt disponible",
+        "buttonDemo": "Code source",
+        "buttonGithub": "GitHub",
+        "imageAlt": "Aperçu du projet Agent IA"
+      },
+      {
+        "title": "Portfolio Personnel",
+        "description": "Portfolio développeur moderne avec Next.js 15, animations Framer Motion et design system personnalisé. Optimisé performances et SEO.",
+        "tags": ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+        "inDevelopment": false,
+        "buttonUnavailable": "Bientôt disponible",
+        "buttonDemo": "Code source",
+        "buttonGithub": "GitHub",
+        "imageAlt": "Aperçu du portfolio personnel"
+      }
+    ],
+    "aria": {
+      "viewSource": "Voir le code source de",
+      "viewGithub": "Voir le GitHub de",
+      "inDevelopment": "Projet en développement"
+    }
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "subtitle": "Une question, un projet ou une opportunité ? Je serais ravi d'en discuter avec vous.",
+    "form": {
+      "nameLabel": "Nom complet",
+      "namePlaceholder": "Ex: Cheick Issa San Kara",
+      "nameRequired": "Le nom complet est requis",
+      "nameMinLength": "Le nom doit contenir au moins 2 caractères",
+      "emailLabel": "Adresse email",
+      "emailPlaceholder": "Ex: email@example.com",
+      "emailRequired": "L'email est requis",
+      "emailInvalid": "Veuillez entrer un email valide",
+      "subjectLabel": "Sujet",
+      "subjectPlaceholder": "Ex: Demande de collaboration",
+      "subjectRequired": "Le sujet est requis",
+      "subjectMinLength": "Le sujet doit contenir au moins 3 caractères",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Décrivez votre projet ou votre demande...",
+      "messageRequired": "Le message est requis",
+      "messageMinLength": "Le message doit contenir au moins 10 caractères",
+      "submitButton": "Envoyer le message",
+      "submitting": "Envoi en cours...",
+      "successTitle": "Message envoyé avec succès !",
+      "successMessage": "Je vous répondrai dans les plus brefs délais.",
+      "errorGeneric": "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer."
+    },
+    "sidebar": {
+      "title": "Mes coordonnées",
+      "email": {
+        "label": "Email",
+        "value": "admin@san-kara.site"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "value": "Voir mon profil"
+      },
+      "github": {
+        "label": "GitHub",
+        "value": "Voir mes projets"
+      },
+      "location": {
+        "label": "Localisation",
+        "value": "Abidjan Koumassi, Côte d'Ivoire 🇨🇮"
+      },
+      "whatsapp": {
+        "label": "WhatsApp",
+        "value": "+225 07 09 55 17 44"
+      },
+      "availability": {
+        "label": "Disponibilité",
+        "value": "Ouvert aux missions freelance"
+      }
+    }
+  },
+  "footer": {
+    "logo": "<ISSA_SANKARA/>",
+    "tagline": "Développeur Fullstack & Designer Créatif",
+    "comment": "// Création d'expériences digitales modernes avec une touche ivoirienne",
+    "navigation": {
+      "title": "Navigation",
+      "home": "Accueil",
+      "about": "À Propos",
+      "projects": "Projets",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "social": {
+      "title": "Connect",
+      "comment": "// Follow me for updates",
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "copyright": "© {year} ISSA_SANKARA // Next.js + Framer Motion",
+    "badge": "MADE_IN_CÔTE_D'IVOIRE"
+  }
+}

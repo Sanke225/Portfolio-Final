@@ -27,18 +27,15 @@ const technologies: TechBadge[] = [
 
   // Backend
   { name: "Node.js", category: "backend" },
-  { name: "Python", category: "backend" },
   { name: "PostgreSQL", category: "backend" },
   { name: "MongoDB", category: "backend" },
 
   // IA/ML
-  { name: "TensorFlow", category: "ai" },
   { name: "OpenAI", category: "ai" },
   { name: "LangChain", category: "ai" },
   { name: "Anthropic Claude", category: "ai" },
 
   // Tools
-  { name: "Docker", category: "tools" },
   { name: "Git", category: "tools" },
   { name: "Vercel", category: "tools" },
   { name: "Firebase", category: "tools" },

@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons/SocialIcons";
+import { ThemeToggle } from "./theme";
+import { LanguageSelector } from "./language";
+import { useTranslation } from "@/lib/i18n";
 
 /**
  * Composant Header avec navigation principale
@@ -19,6 +22,7 @@ interface SocialLink {
 }
 
 export default function Header() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -54,22 +58,22 @@ export default function Header() {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { href: "/", label: "Accueil" },
-    { href: "#about", label: "À Propos" },
-    { href: "#services", label: "Services" },
-    { href: "#projects", label: "Projets" },
-    { href: "#contact", label: "Contact" },
+    { href: "/", label: t('header.nav.home') },
+    { href: "#about", label: t('header.nav.about') },
+    { href: "#services", label: t('header.nav.services') },
+    { href: "#projects", label: t('header.nav.projects') },
+    { href: "#contact", label: t('header.nav.contact') },
   ];
 
   const socialLinks: SocialLink[] = [
     {
       href: "https://github.com/Sanke225",
-      label: "GitHub",
+      label: t('header.aria.github'),
       Icon: GithubIcon,
     },
     {
       href: "https://www.linkedin.com/in/issa-sankara-71124334a",
-      label: "LinkedIn",
+      label: t('header.aria.linkedin'),
       Icon: LinkedinIcon,
     },
   ];
@@ -89,7 +93,7 @@ export default function Header() {
             href="/"
             className="font-mono text-base sm:text-lg font-bold text-soft-white hover:text-violet-soft transition-colors duration-300 tracking-tight"
           >
-            &lt;ISSA_SANKARA/&gt;
+            {t('header.logo')}
           </Link>
 
           {/* Navigation Desktop - Brutalist */}
@@ -122,6 +126,9 @@ export default function Header() {
                   <social.Icon className="w-5 h-5" strokeWidth={2} />
                 </a>
               ))}
+              {/* Language Selector & Theme Toggle */}
+              <LanguageSelector />
+              <ThemeToggle />
             </div>
           </div>
 
@@ -179,6 +186,9 @@ export default function Header() {
                 <social.Icon className="w-5 h-5" strokeWidth={2} />
               </a>
             ))}
+            {/* Language Selector & Theme Toggle Mobile */}
+            <LanguageSelector />
+            <ThemeToggle />
           </div>
         </nav>
       </div>

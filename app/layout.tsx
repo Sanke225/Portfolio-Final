@@ -3,11 +3,9 @@ import { Instrument_Serif, Schibsted_Grotesk, Martian_Mono } from "next/font/goo
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/theme";
+import { LanguageProvider } from "@/lib/i18n";
 
-/**
- * Abidjan Kinetic Font System
- * Distinctive typography for bold, memorable design
- */
 
 // Display Font - Instrument Serif (Ultra-bold for headings)
 const instrumentSerif = Instrument_Serif({
@@ -64,32 +62,32 @@ export const metadata: Metadata = {
     "Portfolio développeur",
     "Web moderne",
   ],
-  authors: [{ name: "Cheick Issa San Kara", url: "https://issasankara.com" }],
-  creator: "Cheick Issa San Kara",
-  publisher: "Cheick Issa San Kara",
+  authors: [{ name: "Cheick Issa SanKara", url: "https://issasankara.com" }],
+  creator: "Cheick Issa SanKara",
+  publisher: "Cheick Issa SanKara",
   openGraph: {
     type: "website",
     locale: "fr_CI",
     alternateLocale: ["fr_FR"],
     url: "https://issasankara.com",
-    title: "Cheick Issa San Kara | Développeur Fullstack & Designer Créatif",
+    title: "Cheick Issa SanKara | Développeur Fullstack & Designer Créatif",
     description:
-      "Développeur fullstack junior et designer créatif basé en Côte d'Ivoire. Spécialisé en Next.js, React, Firebase et solutions d'intelligence artificielle.",
+      "DÉVELOPPEUR FULL-STACK ORIENTÉ IA & AUTOMATISATION",
     siteName: "Portfolio Cheick Issa San Kara",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Cheick Issa San Kara - Développeur Fullstack",
+        alt: "Cheick Issa SanKara - Développeur Fullstack",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cheick Issa San Kara | Développeur Fullstack & Designer Créatif",
+    title: "Cheick Issa SanKara | Développeur Fullstack ORIENTÉ IA & AUTOMATISATION",
     description:
-      "Développeur fullstack junior et designer créatif basé en Côte d'Ivoire. Spécialisé en Next.js, React, Firebase et solutions d'intelligence artificielle.",
+      "DÉVELOPPEUR FULL-STACK ORIENTÉ IA & AUTOMATISATION.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -124,11 +122,16 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${instrumentSerif.variable} ${schibstedGrotesk.variable} ${martianMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <LanguageProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

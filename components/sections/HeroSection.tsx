@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Code, ArrowRight } from "lucide-react";
 import { StatsBar, TechStackCarousel, ScrollIndicator } from "@/components/hero";
+import { useTranslation } from "@/lib/i18n";
 
 /**
  * Hero Section - Abidjan Kinetic Aesthetic
@@ -13,7 +14,8 @@ import { StatsBar, TechStackCarousel, ScrollIndicator } from "@/components/hero"
  * Heavy, weighted animations with custom easing
  */
 export default function HeroSection() {
-  const name = "Cheick Issa";
+  const { t } = useTranslation();
+  const name = t('hero.name');
   const letters = name.split('');
 
   return (
@@ -30,7 +32,7 @@ export default function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 border-2 border-shadow bg-concrete px-4 py-2 font-mono text-xs font-medium text-shadow">
             <Code className="w-4 h-4" strokeWidth={2.5} />
-            DÉVELOPPEUR IA - FULLSTACK
+            {t('hero.badge')}
           </span>
         </motion.div>
 
@@ -71,8 +73,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl font-sans text-xl text-dust mb-16 leading-relaxed"
         >
-          Je transforme vos idées en <strong className="text-shadow font-medium">solutions digitales intelligentes et automatisées</strong>.
-          Je conçois des expériences web modernes qui fusionnent développement technique, design intentionnel et automatisation IA.
+          {t('hero.subtitle')} <strong className="text-shadow font-medium">{t('hero.subtitleBold')}</strong>. {t('hero.description')}
         </motion.p>
 
         {/* CTAs - Brutalist Style */}
@@ -87,7 +88,7 @@ export default function HeroSection() {
             href="#projets"
             className="group relative overflow-hidden border-4 border-shadow bg-terracotta px-10 py-5 font-sans text-base font-bold text-concrete transition-all duration-500 hover:bg-rust shadow-brutal hover:shadow-brutal-lg hover:translate-x-[-4px] hover:translate-y-[-4px]"
           >
-            <span className="relative z-10">VOIR MES PROJETS</span>
+            <span className="relative z-10">{t('hero.cta.projects')}</span>
           </Link>
 
           {/* Secondary CTA */}
@@ -95,7 +96,7 @@ export default function HeroSection() {
             href="#contact"
             className="group border-4 border-shadow bg-concrete px-10 py-5 font-sans text-base font-bold text-shadow transition-all duration-500 hover:bg-shadow hover:text-concrete"
           >
-            ME CONTACTER
+            {t('hero.cta.contact')}
           </Link>
         </motion.div>
 
@@ -131,7 +132,7 @@ export default function HeroSection() {
               <span className="absolute inline-flex h-full w-full animate-ping bg-forest opacity-75" />
               <span className="relative inline-flex h-3 w-3 bg-forest" />
             </span>
-            <span className="text-shadow font-medium">DISPONIBLE / ABIDJAN 225</span>
+            <span className="text-shadow font-medium">{t('hero.status')}</span>
           </div>
         </motion.div>
 

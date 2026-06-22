@@ -1,20 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons/SocialIcons";
+import { useTranslation } from "@/lib/i18n";
 
 /**
  * Footer - Abidjan Kinetic Style
  * Brutalist footer avec icônes Lucide + Custom SVG
  */
 export default function Footer() {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const navigationLinks = [
-    { href: "/", label: "Accueil" },
-    { href: "#about", label: "À Propos" },
-    { href: "#projects", label: "Projets" },
-    { href: "#services", label: "Services" },
-    { href: "#contact", label: "Contact" },
+    { href: "/", label: t('footer.navigation.home') },
+    { href: "#about", label: t('footer.navigation.about') },
+    { href: "#projects", label: t('footer.navigation.projects') },
+    { href: "#services", label: t('footer.navigation.services') },
+    { href: "#contact", label: t('footer.navigation.contact') },
   ];
 
   const socialLinks = [
@@ -38,20 +42,20 @@ export default function Footer() {
           {/* Colonne 1 : Branding */}
           <div className="space-y-4">
             <h3 className="font-mono text-base font-bold text-concrete border-l-4 border-terracotta pl-4">
-              &lt;ISSA_SANKARA/&gt;
+              {t('footer.logo')}
             </h3>
             <p className="font-sans text-sm text-dust pl-4">
-              Développeur Fullstack & Designer Créatif
+              {t('footer.tagline')}
             </p>
             <p className="font-mono text-xs text-dust/70 pl-4 max-w-xs leading-relaxed">
-              // Création d'expériences digitales modernes avec une touche ivoirienne
+              {t('footer.comment')}
             </p>
           </div>
 
           {/* Colonne 2 : Navigation */}
           <div className="space-y-4">
             <h4 className="font-mono text-sm font-bold text-concrete uppercase border-b-2 border-dust/20 pb-2">
-              Navigation
+              {t('footer.navigation.title')}
             </h4>
             <nav>
               <ul className="space-y-2">
@@ -73,10 +77,10 @@ export default function Footer() {
           {/* Colonne 3 : Réseaux Sociaux */}
           <div className="space-y-4">
             <h4 className="font-mono text-sm font-bold text-concrete uppercase border-b-2 border-dust/20 pb-2">
-              Connect
+              {t('footer.social.title')}
             </h4>
             <p className="font-mono text-xs text-dust/70">
-              // Follow me for updates
+              {t('footer.social.comment')}
             </p>
             <div className="flex items-center gap-3 pt-2">
               {socialLinks.map((social) => (
@@ -100,14 +104,14 @@ export default function Footer() {
           {/* Copyright - Brutalist */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="font-mono text-xs text-dust/70 text-center sm:text-left">
-              © {currentYear} ISSA_SANKARA // Next.js + Framer Motion
+              {t('footer.copyright', { year: currentYear })}
             </p>
 
             {/* Badge Côte d'Ivoire - Lucide Icon */}
             <div className="flex items-center gap-2 border-2 border-forest/50 px-3 py-2">
               <MapPin className="w-4 h-4 text-forest" strokeWidth={2.5} />
               <span className="font-mono text-xs font-medium text-concrete">
-                MADE_IN_CÔTE_D'IVOIRE
+                {t('footer.badge')}
               </span>
             </div>
           </div>
