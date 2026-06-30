@@ -6,7 +6,12 @@ import type { SiteContent } from "@/lib/site-content/types";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // Sécuriser la lecture du contenu admin
+  if (!isAdminRequest(request)) {
+    return NextResponse.json({ message: "Non autorisé." }, { status: 401 });
+  }
+
   const content = await getSiteContent();
   return NextResponse.json(content);
 }

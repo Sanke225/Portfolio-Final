@@ -372,14 +372,15 @@ export default function PortfolioAdmin() {
     }
   };
 
-  const ActiveIcon = sectionIconMap[{
+  const iconMapping: Record<SectionKey, IconKey> = {
     hero: "Code",
     about: "Palette",
     skills: "Brain",
     services: "Layers",
     projects: "Globe",
     contact: "Smartphone",
-  }[previewKey]];
+  };
+  const ActiveIcon = sectionIconMap[iconMapping[previewKey]];
 
   if (isCheckingSession) {
     return (
@@ -399,7 +400,7 @@ export default function PortfolioAdmin() {
   if (!isAuthenticated) {
     return (
       <div className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-[#09090b] px-6 py-20 text-[#f5ede3]">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:44px_44px] opacity-60" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[44px_44px] opacity-60" />
         <div className="absolute left-[-10%] top-[-10%] h-80 w-80 rounded-full bg-[#d7b26d]/10 blur-3xl" />
         <div className="absolute bottom-[-10%] right-[-10%] h-80 w-80 rounded-full bg-[#6cb3ff]/10 blur-3xl" />
 
@@ -458,7 +459,7 @@ export default function PortfolioAdmin() {
                 />
                 <button
                   type="submit"
-                  className="inline-flex cursor-pointer items-center gap-2 border border-[#d7b26d]/60 bg-[#d7b26d] px-4 py-3 text-sm font-semibold text-[#120f0b] transition hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                  className="inline-flex cursor-pointer items-center gap-2 border border-[#d7b26d]/60 bg-[#d7b26d] px-4 py-3 text-sm font-semibold text-[#120f0b] transition hover:-translate-x-1"
                 >
                   <LockKeyhole className="h-4 w-4" />
                   Accéder au dashboard
@@ -559,7 +560,7 @@ export default function PortfolioAdmin() {
             <div className="space-y-3">
               {draft.projects.items.slice(0, 2).map((project) => (
                 <div key={project.id} className="overflow-hidden border border-white/10 bg-white/5">
-                  <div className={`h-24 bg-gradient-to-br ${project.image.gradient}`} />
+                  <div className={`h-24 bg-linear-to-br ${project.image.gradient}`} />
                   <div className="p-3">
                     <div className="flex items-center justify-between gap-2">
                       <h4 className="font-medium text-[#f7efe2]">{project.title}</h4>
@@ -603,7 +604,7 @@ export default function PortfolioAdmin() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#09090b] text-[#f5ede3]">
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:44px_44px] opacity-50" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[44px_44px] opacity-50" />
       <div className="absolute left-[-10%] top-[-10%] h-80 w-80 rounded-full bg-[#d7b26d]/10 blur-3xl" />
       <div className="absolute bottom-[-10%] right-[-10%] h-80 w-80 rounded-full bg-[#6cb3ff]/10 blur-3xl" />
 
@@ -625,7 +626,7 @@ export default function PortfolioAdmin() {
               type="button"
               onClick={handleSave}
               disabled={isSaving}
-              className="inline-flex items-center gap-2 border border-[#d7b26d]/60 bg-[#d7b26d] px-4 py-3 text-sm font-semibold text-[#120f0b] transition hover:translate-x-[-2px] hover:translate-y-[-2px] disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center gap-2 border border-[#d7b26d]/60 bg-[#d7b26d] px-4 py-3 text-sm font-semibold text-[#120f0b] transition hover:-translate-x-1 disabled:cursor-not-allowed disabled:opacity-60"
             >
               <Save className="h-4 w-4" />
               {isSaving ? "Publication..." : "Publier"}
@@ -887,6 +888,8 @@ export default function PortfolioAdmin() {
                           <div>
                             <FieldLabel label="Icône" />
                             <select
+                              aria-label="Sélectionner une icône pour la catégorie"
+                              title="Icône de la catégorie"
                               value={category.icon}
                               onChange={(event) =>
                                 updateSection("skills", (section) => ({
@@ -990,6 +993,8 @@ export default function PortfolioAdmin() {
                           <div>
                             <FieldLabel label="Icône" />
                             <select
+                              aria-label="Sélectionner une icône pour le service"
+                              title="Icône du service"
                               value={service.icon}
                               onChange={(event) =>
                                 updateSection("services", (section) => ({
@@ -1205,6 +1210,8 @@ export default function PortfolioAdmin() {
                               <input
                                 type="file"
                                 accept="image/*"
+                                aria-label="Uploader une image pour le projet"
+                                title="Sélectionner une image"
                                 onChange={(event) => {
                                   const file = event.target.files?.[0];
                                   if (file) {

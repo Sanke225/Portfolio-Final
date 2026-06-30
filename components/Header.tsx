@@ -143,7 +143,7 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-3 border-2 border-soft-white text-soft-white hover:bg-violet-soft hover:border-violet-soft transition-all duration-300"
             aria-label="Toggle menu"
-            aria-expanded={isMobileMenuOpen}
+            aria-expanded={isMobileMenuOpen ? "true" : "false"}
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" strokeWidth={3} />
@@ -156,7 +156,7 @@ export default function Header() {
 
       {/* Menu Mobile - Brutalist */}
       <div
-        className={`md:hidden fixed inset-0 top-[60px] bg-shadow transition-all duration-300 ${
+        className={`md:hidden fixed inset-0 top-15 bg-shadow transition-all duration-300 ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"

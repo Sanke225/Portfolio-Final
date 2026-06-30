@@ -32,8 +32,7 @@ export default function AboutSection() {
             className="hidden lg:block"
           >
             <div className="sticky top-32">
-              <h2 className="font-serif text-[180px] font-black text-dust/20 whitespace-nowrap origin-top-left"
-                  style={{ writingMode: 'vertical-rl' }}>
+              <h2 className="font-serif text-[180px] font-black text-dust/20 whitespace-nowrap origin-top-left [writing-mode:vertical-rl]">
                 ABOUT
               </h2>
             </div>

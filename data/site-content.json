@@ -63,17 +63,17 @@
         "description": "Reconversion après 3 ans en design textile. Première ligne de code, passion immédiate."
       },
       {
-        "year": "2025",
+        "year": "2024-2025",
         "title": "Formation Intensive",
         "description": "Bootcamp GoMyCode Rivera (Abidjan) : HTML, CSS, JavaScript, React, Firebase. Certification obtenue."
       },
       {
-        "year": "2026",
+        "year": "2025",
         "title": "Spécialisation IA & Automatisation",
         "description": "Bootcamp Fullstack & IA à GoMyCode. Agents IA, workflows N8N, intégrations APIs. Certification obtenue."
       },
       {
-        "year": "2026-2027",
+        "year": "2025-Présent",
         "title": "Freelance IA - Fullstack",
         "description": "Expertise IA générative, développement web moderne (Next.js, TypeScript), automatisation de processus métier."
       }
@@ -236,7 +236,7 @@
         "links": {
           "github": "https://github.com/Sanke225"
         },
-        "inDevelopment": true
+        "inDevelopment": false
       },
       {
         "id": 3,
@@ -256,7 +256,7 @@
         "links": {
           "github": "https://github.com/Sanke225"
         },
-        "inDevelopment": true
+        "inDevelopment": false
       },
       {
         "id": 4,

@@ -98,7 +98,7 @@ export default function Footer() {
                   className="p-3 border-2 border-concrete/30 hover:border-terracotta text-concrete hover:text-terracotta hover:bg-indigo-ink transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.Icon className="w-5 h-5" strokeWidth={2} />
+                  <social.Icon className="w-5 h-5" />
                 </a>
               ))}
             </div>

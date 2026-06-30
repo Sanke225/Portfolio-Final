@@ -148,8 +148,7 @@ export default function HeroSection() {
             {/* Overlapping Brutalist Squares */}
             <div className="absolute top-0 left-0 w-48 h-48 border-4 border-shadow" />
             <div className="absolute bottom-0 right-0 w-48 h-48 bg-clay opacity-20" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gold-thread opacity-30"
-                 style={{ transform: 'translate(-50%, -50%) rotate(45deg)' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gold-thread opacity-30 rotate-45" />
           </div>
         </motion.div>
       </div>

@@ -61,7 +61,7 @@ const ServicesSection: React.FC = () => {
                 delay: 0.1 + (index * 0.1),
                 ease: [0.16, 1, 0.3, 1]
               }}
-              className="group relative bg-concrete border-4 border-shadow h-full flex flex-col shadow-brutal hover:shadow-brutal-lg hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-500"
+              className="group relative bg-concrete border-4 border-shadow h-full flex flex-col shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 transition-all duration-500"
             >
               {/* Terracotta Accent on Hover */}
               <motion.div
@@ -117,7 +117,7 @@ const ServicesSection: React.FC = () => {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-3 border-4 border-shadow bg-terracotta px-10 py-5 font-sans text-base font-bold text-concrete shadow-brutal hover:shadow-brutal-lg hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-500"
+            className="inline-flex items-center gap-3 border-4 border-shadow bg-terracotta px-10 py-5 font-sans text-base font-bold text-concrete shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 transition-all duration-500"
           >
             <span>{content.services.cta.button}</span>
             <ArrowRight className="w-5 h-5" strokeWidth={3} />
