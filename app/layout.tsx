@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme";
 import { LanguageProvider } from "@/lib/i18n";
+import { SiteContentProvider } from "@/lib/site-content/context";
+import { getSiteContent } from "@/lib/site-content/server";
 
 
 // Display Font - Instrument Serif (Ultra-bold for headings)
@@ -113,11 +115,13 @@ export const metadata: Metadata = {
  * - Configuration des polices Inter et JetBrains Mono
  * - Structure flex pour sticky footer
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteContent = await getSiteContent();
+
   return (
     <html
       lang="fr"
@@ -127,9 +131,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <ThemeProvider>
           <LanguageProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <SiteContentProvider initialContent={siteContent}>
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </SiteContentProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>

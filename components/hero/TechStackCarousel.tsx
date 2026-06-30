@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useSiteContent } from "@/lib/site-content/context";
 
 /**
  * TechStackCarousel - Défilement horizontal infini des technologies
@@ -12,46 +13,19 @@ import { motion } from "framer-motion";
  * - Pause au hover
  */
 
-interface TechBadge {
-  name: string;
-  category: "frontend" | "backend" | "ai" | "tools";
-}
-
-const technologies: TechBadge[] = [
-  // Frontend
-  { name: "React", category: "frontend" },
-  { name: "Next.js", category: "frontend" },
-  { name: "TypeScript", category: "frontend" },
-  { name: "Tailwind CSS", category: "frontend" },
-  { name: "Framer Motion", category: "frontend" },
-
-  // Backend
-  { name: "Node.js", category: "backend" },
-  { name: "PostgreSQL", category: "backend" },
-  { name: "MongoDB", category: "backend" },
-
-  // IA/ML
-  { name: "OpenAI", category: "ai" },
-  { name: "LangChain", category: "ai" },
-  { name: "Anthropic Claude", category: "ai" },
-
-  // Tools
-  { name: "Git", category: "tools" },
-  { name: "Vercel", category: "tools" },
-  { name: "Firebase", category: "tools" },
-];
-
 export default function TechStackCarousel() {
+  const { content } = useSiteContent();
   // Dupliquer les badges pour effet seamless
-  const duplicatedTechs = [...technologies, ...technologies];
+  const badges = content.hero.techStack.map((name) => ({ name }));
+  const duplicatedTechs = [...badges, ...badges];
 
   return (
     <div className="relative w-full overflow-hidden border-y-2 border-shadow bg-concrete py-6">
       {/* Gradient Fade - Gauche */}
-      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-concrete to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-linear-to-r from-concrete to-transparent" />
 
       {/* Gradient Fade - Droite */}
-      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-concrete to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-linear-to-l from-concrete to-transparent" />
 
       {/* Conteneur animé */}
       <motion.div

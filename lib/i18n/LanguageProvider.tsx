@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useState, useEffect } from 'react';
+import { ReactNode, useEffect, useState, startTransition } from 'react';
 import { LanguageContext, Language } from './LanguageContext';
 
 interface LanguageProviderProps {
@@ -16,14 +16,14 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     const storedLanguage = localStorage.getItem('language') as Language | null;
 
     if (storedLanguage && (storedLanguage === 'fr' || storedLanguage === 'en')) {
-      setLanguageState(storedLanguage);
+      startTransition(() => setLanguageState(storedLanguage));
     } else {
       const browserLang = navigator.language.toLowerCase();
       const detectedLang = browserLang.startsWith('en') ? 'en' : 'fr';
-      setLanguageState(detectedLang);
+      startTransition(() => setLanguageState(detectedLang));
     }
 
-    setIsInitialized(true);
+    startTransition(() => setIsInitialized(true));
   }, []);
 
   // Save language to localStorage when it changes

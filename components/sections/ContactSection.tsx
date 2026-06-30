@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FadeIn, ScaleOnHover } from "@/components/animations";
+import { useSiteContent } from "@/lib/site-content/context";
 
 /* Données du formulaire de contact */
 interface FormData {
@@ -21,6 +22,8 @@ interface FormErrors {
 
 /* Section Contact - Formulaire et coordonnées -Présente un formulaire de contact avec validation côté client et une sidebar avec les coordonnées professionnelles. Fonctionnalités : - Validation en temps réel au blur - Messages d'erreur personnalisés - État de chargement pendant la soumission - Message de succès après envoi - Reset automatique du formulaire - Responsive : 2 colonnes desktop, 1 colonne mobile */
 export default function ContactSection() {
+  const { content } = useSiteContent();
+  const contact = content.contact;
   // État du formulaire
   const [formData, setFormData] = useState<FormData>({
     nom: "",
@@ -223,11 +226,10 @@ export default function ContactSection() {
         <FadeIn delay={0} direction="up">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-4xl font-bold tracking-tight text-neutral-dark lg:text-5xl">
-              Contactez-moi
+              {contact.sectionTitle}
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-neutral-medium">
-              Une question, un projet ou une opportunité ? Je serais ravi d'en
-              discuter avec vous.
+              {contact.sectionSubtitle}
             </p>
           </div>
         </FadeIn>
@@ -235,7 +237,7 @@ export default function ContactSection() {
         {/* Message de succès */}
         {isSuccess && (
           <div className="mx-auto mb-8 max-w-4xl animate-fade-in rounded-lg bg-accent-green/10 px-6 py-4 ring-1 ring-accent-green/20">
-            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
               <svg
                 className="h-6 w-6 flex-shrink-0 text-accent-green"
                 fill="none"
@@ -251,10 +253,10 @@ export default function ContactSection() {
               </svg>
               <div>
                 <h3 className="font-semibold text-accent-green">
-                  Message envoyé avec succès !
+                  {contact.successTitle}
                 </h3>
                 <p className="text-sm text-neutral-dark">
-                  Je vous répondrai dans les plus brefs délais.
+                  {contact.successDescription}
                 </p>
               </div>
             </div>
@@ -290,7 +292,7 @@ export default function ContactSection() {
                       ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
                       : "border-neutral-border focus:border-primary focus:ring-primary/20"
                   }`}
-                  placeholder="Ex: Cheick Issa San Kara"
+                  placeholder={contact.form.successPlaceholderName}
                   aria-required="true"
                   aria-invalid={!!errors.nom}
                   aria-describedby={errors.nom ? "nom-error" : undefined}
@@ -308,7 +310,7 @@ export default function ContactSection() {
                   htmlFor="email"
                   className="mb-2 block text-sm font-semibold text-neutral-dark"
                 >
-                  Adresse email <span className="text-red-500">*</span>
+                  {contact.form.emailLabel} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
@@ -322,7 +324,7 @@ export default function ContactSection() {
                       ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
                       : "border-neutral-border focus:border-primary focus:ring-primary/20"
                   }`}
-                  placeholder="Ex: email@example.com"
+                  placeholder={contact.form.successPlaceholderEmail}
                   aria-required="true"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
@@ -340,7 +342,7 @@ export default function ContactSection() {
                   htmlFor="sujet"
                   className="mb-2 block text-sm font-semibold text-neutral-dark"
                 >
-                  Sujet <span className="text-red-500">*</span>
+                  {contact.form.subjectLabel} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -354,7 +356,7 @@ export default function ContactSection() {
                       ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
                       : "border-neutral-border focus:border-primary focus:ring-primary/20"
                   }`}
-                  placeholder="Ex: Demande de collaboration"
+                  placeholder={contact.form.successPlaceholderSubject}
                   aria-required="true"
                   aria-invalid={!!errors.sujet}
                   aria-describedby={errors.sujet ? "sujet-error" : undefined}
@@ -372,7 +374,7 @@ export default function ContactSection() {
                   htmlFor="message"
                   className="mb-2 block text-sm font-semibold text-neutral-dark"
                 >
-                  Message <span className="text-red-500">*</span>
+                  {contact.form.messageLabel} <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -386,7 +388,7 @@ export default function ContactSection() {
                       ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
                       : "border-neutral-border focus:border-primary focus:ring-primary/20"
                   }`}
-                  placeholder="Décrivez votre projet ou votre demande..."
+                  placeholder={contact.form.successPlaceholderMessage}
                   aria-required="true"
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "message-error" : undefined}
@@ -426,11 +428,11 @@ export default function ContactSection() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       />
                     </svg>
-                    Envoi en cours...
+                    {contact.form.submitting}
                   </>
                 ) : (
                   <>
-                    Envoyer le message
+                    {contact.form.submit}
                     <svg
                       className="h-5 w-5 text-white transition-transform group-hover:translate-x-1"
                       fill="none"
@@ -455,7 +457,7 @@ export default function ContactSection() {
           <FadeIn delay={0.2} direction="up" className="order-1 mb-8 lg:order-2 lg:mb-0">
             <div className="sticky top-8 space-y-6 rounded-2xl bg-primary/5 p-8 ring-1 ring-primary/20">
               <h3 className="text-2xl font-bold text-neutral-dark">
-                Mes coordonnées
+                {contact.sidebar.title}
               </h3>
 
               {/* Email */}
@@ -477,13 +479,13 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-semibold text-neutral-dark">
-                    Email
+                    {contact.sidebar.emailLabel}
                   </h4>
                   <a
                     href="mailto:admin@syntarasoft.net"
                     className="text-primary transition-colors hover:text-primary-dark hover:underline"
                   >
-                    admin@san-kara.site
+                    {contact.sidebar.emailValue}
                   </a>
                 </div>
               </div>
@@ -501,7 +503,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-semibold text-neutral-dark">
-                    LinkedIn
+                    {contact.sidebar.linkedinLabel}
                   </h4>
                   <a
                     href="https://www.linkedin.com/in/issa-sankara-71124334a"
@@ -509,7 +511,7 @@ export default function ContactSection() {
                     rel="noopener noreferrer"
                     className="text-primary transition-colors hover:text-primary-dark hover:underline"
                   >
-                    Voir mon profil
+                    {contact.sidebar.linkedinValue}
                   </a>
                 </div>
               </div>
@@ -527,7 +529,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-semibold text-neutral-dark">
-                    GitHub
+                    {contact.sidebar.githubLabel}
                   </h4>
                   <a
                     href="https://github.com/Sanke225"
@@ -535,7 +537,7 @@ export default function ContactSection() {
                     rel="noopener noreferrer"
                     className="text-primary transition-colors hover:text-primary-dark hover:underline"
                   >
-                    Voir mes projets
+                    {contact.sidebar.githubValue}
                   </a>
                 </div>
               </div>
@@ -565,10 +567,10 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-semibold text-neutral-dark">
-                    Localisation
+                    {contact.sidebar.locationLabel}
                   </h4>
                   <p className="text-neutral-medium">
-                    Abidjan Koumassi, Côte d'Ivoire 🇨🇮
+                    {contact.sidebar.locationValue}
                   </p>
                 </div>
               </div>
@@ -586,7 +588,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-semibold text-neutral-dark">
-                    WhatsApp
+                    {contact.sidebar.whatsappLabel}
                   </h4>
                   <a
                     href="https://wa.me/2250709551744"
@@ -594,7 +596,7 @@ export default function ContactSection() {
                     rel="noopener noreferrer"
                     className="text-primary transition-colors hover:text-primary-dark hover:underline"
                   >
-                    +225 07 09 55 17 44
+                    {contact.sidebar.whatsappValue}
                   </a>
                 </div>
               </div>
@@ -618,10 +620,10 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="mb-1 font-semibold text-neutral-dark">
-                    Disponibilité
+                    {contact.sidebar.availabilityLabel}
                   </h4>
                   <p className="text-neutral-medium">
-                    Ouvert aux missions freelance
+                    {contact.sidebar.availabilityValue}
                   </p>
                 </div>
               </div>

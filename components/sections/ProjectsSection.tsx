@@ -3,97 +3,13 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { FadeIn, StaggerContainer, ScaleOnHover } from '@/components/animations';
-
-/**
- * Interface pour définir la structure d'un projet
- */
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  tags: string[];
-  image: {
-    src: string;
-    alt: string;
-    gradient: string;
-  };
-  links: {
-    demo?: string;
-    github: string;
-  };
-  inDevelopment: boolean;
-}
-
-/**
- * Données des projets du portfolio
- */
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Landkit',
-    description: 'Landing page moderne et responsive avec animations fluides et design premium. Optimisée pour la conversion et le SEO.',
-    tags: ['HTML5', 'CSS3', 'JavaScript', 'Animations'],
-    image: {
-      src: '/placeholder-landkit.svg',
-      alt: 'Aperçu du projet Landkit',
-      gradient: 'from-purple-500 to-violet-600'
-    },
-    links: {
-      github: 'https://github.com/Sanke225'
-    },
-    inDevelopment: true
-  },
-  {
-    id: 2,
-    title: 'FlowFund',
-    description: 'Plateforme de cagnotte en ligne collaborative et sécurisée. Paiements Stripe, authentification Firebase et dashboard temps réel.',
-    tags: ['Next.js', 'Firebase', 'Stripe', 'React'],
-    image: {
-      src: '/placeholder-flowfund.svg',
-      alt: 'Aperçu du projet FlowFund',
-      gradient: 'from-blue-500 to-violet-600'
-    },
-    links: {
-      github: 'https://github.com/Sanke225'
-    },
-    inDevelopment: true
-  },
-  {
-    id: 3,
-    title: 'Agent IA Service Client',
-    description: 'Assistant IA conversationnel intelligent pour e-commerce. Intégration n8n, traitement du langage naturel et réponses contextuelles.',
-    tags: ['IA', 'n8n', 'APIs', 'Automatisation'],
-    image: {
-      src: '/placeholder-agent-ia.svg',
-      alt: 'Aperçu du projet Agent IA',
-      gradient: 'from-orange-500 to-violet-600'
-    },
-    links: {
-      github: 'https://github.com/Sanke225'
-    },
-    inDevelopment: true
-  },
-  {
-    id: 4,
-    title: 'Portfolio Personnel',
-    description: 'Portfolio développeur moderne avec Next.js 15, animations Framer Motion et design system personnalisé. Optimisé performances et SEO.',
-    tags: ['Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
-    image: {
-      src: '/placeholder-portfolio.svg',
-      alt: 'Aperçu du portfolio personnel',
-      gradient: 'from-green-500 to-violet-600'
-    },
-    links: {
-      github: 'https://github.com/Sanke225'
-    },
-    inDevelopment: false
-  }
-];
+import { useSiteContent } from '@/lib/site-content/context';
+import type { ProjectItem } from '@/lib/site-content/types';
 
 /**
  * Composant ProjectCard - Carte individuelle de projet
  */
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project }: { project: ProjectItem }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -198,6 +114,9 @@ function ProjectCard({ project }: { project: Project }) {
  * Section présentant tous les projets du portfolio
  */
 export default function ProjectsSection() {
+  const { content } = useSiteContent();
+  const projects = content.projects.items;
+
   return (
     <section
       id="projects"
@@ -212,11 +131,10 @@ export default function ProjectsSection() {
               id="projects-heading"
               className="text-4xl md:text-5xl font-bold text-neutral-dark mb-4"
             >
-              Mes <span className="text-primary">Projets</span>
+              {content.projects.title} <span className="text-primary">{content.projects.titleAccent}</span>
             </h2>
             <p className="text-neutral-medium text-lg max-w-2xl mx-auto">
-              Une sélection de projets qui démontrent mes compétences en développement web moderne,
-              de la conception à la mise en production.
+              {content.projects.subtitle}
             </p>
           </div>
         </FadeIn>

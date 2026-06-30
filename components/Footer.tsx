@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { GithubIcon, LinkedinIcon } from "./icons/SocialIcons";
 import { useTranslation } from "@/lib/i18n";
 
@@ -11,7 +12,12 @@ import { useTranslation } from "@/lib/i18n";
  */
 export default function Footer() {
   const { t } = useTranslation();
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   const navigationLinks = [
     { href: "/", label: t('footer.navigation.home') },

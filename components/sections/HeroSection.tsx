@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Code, ArrowRight } from "lucide-react";
+import { Code } from "lucide-react";
 import { StatsBar, TechStackCarousel, ScrollIndicator } from "@/components/hero";
-import { useTranslation } from "@/lib/i18n";
+import { useSiteContent } from "@/lib/site-content/context";
 
 /**
  * Hero Section - Abidjan Kinetic Aesthetic
@@ -14,9 +14,8 @@ import { useTranslation } from "@/lib/i18n";
  * Heavy, weighted animations with custom easing
  */
 export default function HeroSection() {
-  const { t } = useTranslation();
-  const name = t('hero.name');
-  const letters = name.split('');
+  const { content } = useSiteContent();
+  const letters = content.hero.name.split("");
 
   return (
     <section className="relative flex min-h-screen w-full items-start justify-center overflow-hidden bg-concrete px-6 py-32 lg:px-8">
@@ -32,7 +31,7 @@ export default function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 border-2 border-shadow bg-concrete px-4 py-2 font-mono text-xs font-medium text-shadow">
             <Code className="w-4 h-4" strokeWidth={2.5} />
-            {t('hero.badge')}
+            {content.hero.badge}
           </span>
         </motion.div>
 
@@ -73,7 +72,9 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl font-sans text-xl text-dust mb-16 leading-relaxed"
         >
-          {t('hero.subtitle')} <strong className="text-shadow font-medium">{t('hero.subtitleBold')}</strong>. {t('hero.description')}
+          {content.hero.subtitle}{" "}
+          <strong className="text-shadow font-medium">{content.hero.subtitleBold}</strong>.{" "}
+          {content.hero.description}
         </motion.p>
 
         {/* CTAs - Brutalist Style */}
@@ -85,10 +86,10 @@ export default function HeroSection() {
         >
           {/* Primary CTA */}
           <Link
-            href="#projets"
-            className="group relative overflow-hidden border-4 border-shadow bg-terracotta px-10 py-5 font-sans text-base font-bold text-concrete transition-all duration-500 hover:bg-rust shadow-brutal hover:shadow-brutal-lg hover:translate-x-[-4px] hover:translate-y-[-4px]"
+            href="#projects"
+            className="group relative overflow-hidden border-4 border-shadow bg-terracotta px-10 py-5 font-sans text-base font-bold text-concrete transition-all duration-500 hover:bg-rust shadow-brutal hover:shadow-brutal-lg hover:-translate-x-1 hover:-translate-y-1"
           >
-            <span className="relative z-10">{t('hero.cta.projects')}</span>
+            <span className="relative z-10">{content.hero.ctaProjects}</span>
           </Link>
 
           {/* Secondary CTA */}
@@ -96,7 +97,7 @@ export default function HeroSection() {
             href="#contact"
             className="group border-4 border-shadow bg-concrete px-10 py-5 font-sans text-base font-bold text-shadow transition-all duration-500 hover:bg-shadow hover:text-concrete"
           >
-            {t('hero.cta.contact')}
+            {content.hero.ctaContact}
           </Link>
         </motion.div>
 
@@ -132,7 +133,7 @@ export default function HeroSection() {
               <span className="absolute inline-flex h-full w-full animate-ping bg-forest opacity-75" />
               <span className="relative inline-flex h-3 w-3 bg-forest" />
             </span>
-            <span className="text-shadow font-medium">{t('hero.status')}</span>
+            <span className="text-shadow font-medium">{content.hero.status}</span>
           </div>
         </motion.div>
 

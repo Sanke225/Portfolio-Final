@@ -6,10 +6,9 @@
 
 interface IconProps {
   className?: string;
-  strokeWidth?: number;
 }
 
-export const GithubIcon = ({ className = "w-5 h-5", strokeWidth = 2 }: IconProps) => (
+export const GithubIcon = ({ className = "w-5 h-5" }: IconProps) => (
   <svg
     className={className}
     fill="currentColor"
@@ -24,7 +23,7 @@ export const GithubIcon = ({ className = "w-5 h-5", strokeWidth = 2 }: IconProps
   </svg>
 );
 
-export const LinkedinIcon = ({ className = "w-5 h-5", strokeWidth = 2 }: IconProps) => (
+export const LinkedinIcon = ({ className = "w-5 h-5" }: IconProps) => (
   <svg
     className={className}
     fill="currentColor"

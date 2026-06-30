@@ -3,8 +3,6 @@
  * Gère les préférences reduced-motion pour l'accessibilité
  */
 
-import { MotionConfig } from 'framer-motion';
-
 /**
  * Variants de transition par défaut
  * Utilisent uniquement transform et opacity pour des performances optimales

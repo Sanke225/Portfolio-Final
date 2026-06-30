@@ -5,7 +5,7 @@ import { LanguageContext, Language } from './LanguageContext';
 import { translations, TranslationKey } from './translations';
 
 export interface UseTranslationReturn {
-  t: (key: TranslationKey, variables?: Record<string, any>) => string;
+  t: (key: TranslationKey, variables?: Record<string, string | number | boolean>) => string;
   language: Language;
   setLanguage: (lang: Language) => void;
 }
@@ -19,13 +19,13 @@ export function useTranslation(): UseTranslationReturn {
 
   const { language, setLanguage } = context;
 
-  const t = (key: TranslationKey, variables?: Record<string, any>): string => {
+  const t = (key: TranslationKey, variables?: Record<string, string | number | boolean>): string => {
     const keys = key.split('.');
-    let value: any = translations[language];
+    let value: unknown = translations[language];
 
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
-        value = value[k];
+        value = (value as Record<string, unknown>)[k];
       } else {
         // Fallback: return the key if translation is missing
         return key;

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons/SocialIcons";
 import { ThemeToggle } from "./theme";
@@ -23,6 +24,7 @@ interface SocialLink {
 
 export default function Header() {
   const { t } = useTranslation();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -56,6 +58,10 @@ export default function Header() {
       document.body.style.overflow = "unset";
     }
   }, [isMobileMenuOpen]);
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
 
   const navLinks = [
     { href: "/", label: t('header.nav.home') },

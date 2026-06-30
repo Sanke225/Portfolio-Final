@@ -8,58 +8,16 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Globe, Layers, Brain, Zap, Palette, Smartphone, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import DiagonalSlash from '../DiagonalSlash';
-import type { LucideIcon } from 'lucide-react';
-
-interface Service {
-  Icon: LucideIcon;
-  title: string;
-  description: string;
-}
+import { sectionIconMap } from '@/lib/site-content/icons';
+import { useSiteContent } from '@/lib/site-content/context';
 
 const ServicesSection: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-
-  const services: Service[] = [
-    {
-      Icon: Globe,
-      title: 'Sites Vitrines & Landing Pages',
-      description:
-        'Sites ultra-performants (Next.js 15, TypeScript) avec animations fluides (Framer Motion), optimisation SEO avancée et temps de chargement < 2s. Design responsive et accessible (WCAG).',
-    },
-    {
-      Icon: Layers,
-      title: 'Applications Web Fullstack',
-      description:
-        'Apps React/Next.js avec authentification sécurisée (Firebase Auth), bases de données temps réel (Firestore, Supabase), intégrations paiement (Stripe) et déploiement automatisé.',
-    },
-    {
-      Icon: Brain,
-      title: 'Agents IA Conversationnels',
-      description:
-        'Assistants IA personnalisés (GPT-4, Claude, Gemini) pour automatiser service client, génération de contenu, analyse de données. Intégration APIs IA et traitement du langage naturel.',
-    },
-    {
-      Icon: Zap,
-      title: 'Automatisation & Workflows N8N',
-      description:
-        'Automatisation de processus métier complexes : workflows N8N, intégrations multi-APIs, webhooks, triggers personnalisés. Gain de temps et réduction d\'erreurs humaines.',
-    },
-    {
-      Icon: Palette,
-      title: 'Design UI/UX & Prototypage',
-      description:
-        'Interfaces modernes et intuitives conçues sur Figma. Design systems cohérents (Shadcn/ui, DaisyUI, Tailwind), prototypes interactifs et tests utilisateurs.',
-    },
-    {
-      Icon: Smartphone,
-      title: 'Applications Mobiles (APK)',
-      description:
-        'Développement d\'applications Android natives et cross-platform (React Native). Interface fluide, optimisation performances et intégration services backend (Firebase, API REST).',
-    },
-  ];
+  const { content } = useSiteContent();
+  const services = content.services.items;
 
 
   return (
@@ -72,20 +30,20 @@ const ServicesSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header - Brutalist */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20"
-        >
-          <div className="flex items-start gap-6">
-            <span className="font-mono text-sm text-dust pt-2">03</span>
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-20"
+            >
+              <div className="flex items-start gap-6">
+              <span className="font-mono text-sm text-dust pt-2">{content.services.sectionNumber}</span>
+              <div>
               <h2 className="font-serif text-6xl md:text-7xl font-black text-shadow mb-4 leading-tight">
-                Services
+                {content.services.title}
               </h2>
               <p className="font-sans text-lg text-dust max-w-xl">
-                Solutions techniques sur mesure alliant développement web moderne, IA générative et automatisation intelligente
+                {content.services.subtitle}
               </p>
             </div>
           </div>
@@ -118,7 +76,10 @@ const ServicesSection: React.FC = () => {
                 {/* Icon - Lucide React */}
                 <div className="mb-6">
                   <div className="flex items-center justify-center w-20 h-20 border-4 border-shadow bg-clay/20">
-                    <service.Icon className="w-10 h-10 text-shadow" strokeWidth={2.5} />
+                    {(() => {
+                      const ServiceIcon = sectionIconMap[service.icon];
+                      return <ServiceIcon className="w-10 h-10 text-shadow" strokeWidth={2.5} />;
+                    })()}
                   </div>
                 </div>
 
@@ -152,13 +113,13 @@ const ServicesSection: React.FC = () => {
           className="mt-20 text-center"
         >
           <p className="font-mono text-sm text-dust mb-8">
-            Discutons-en !
+            {content.services.cta.text}
           </p>
           <a
             href="#contact"
             className="inline-flex items-center gap-3 border-4 border-shadow bg-terracotta px-10 py-5 font-sans text-base font-bold text-concrete shadow-brutal hover:shadow-brutal-lg hover:translate-x-[-4px] hover:translate-y-[-4px] transition-all duration-500"
           >
-            <span>DÉMARRER UN PROJET</span>
+            <span>{content.services.cta.button}</span>
             <ArrowRight className="w-5 h-5" strokeWidth={3} />
           </a>
         </motion.div>

@@ -15,7 +15,8 @@ export function ThemeToggle() {
 
   // Évite les erreurs de hydratation
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   if (!mounted) {
