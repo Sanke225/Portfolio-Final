@@ -3,6 +3,7 @@ import { Instrument_Serif, Schibsted_Grotesk, Martian_Mono } from "next/font/goo
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StructuredData from "@/components/StructuredData";
 import { ThemeProvider } from "@/components/theme";
 import { LanguageProvider } from "@/lib/i18n";
 import { SiteContentProvider } from "@/lib/site-content/context";
@@ -39,7 +40,7 @@ const martianMono = Martian_Mono({
  * Optimisées pour le référencement local (Côte d'Ivoire) et international
  */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://issasankara.com"),
+  metadataBase: new URL("https://www.san-kara.site"),
   title: {
     default: "Cheick Issa San Kara | Développeur Fullstack & Designer Créatif",
     template: "%s | Cheick Issa San Kara",
@@ -64,14 +65,14 @@ export const metadata: Metadata = {
     "Portfolio développeur",
     "Web moderne",
   ],
-  authors: [{ name: "Cheick Issa SanKara", url: "https://issasankara.com" }],
+  authors: [{ name: "Cheick Issa SanKara", url: "https://www.san-kara.site" }],
   creator: "Cheick Issa SanKara",
   publisher: "Cheick Issa SanKara",
   openGraph: {
     type: "website",
     locale: "fr_CI",
     alternateLocale: ["fr_FR"],
-    url: "https://issasankara.com",
+    url: "https://www.san-kara.site",
     title: "Cheick Issa SanKara | Développeur Fullstack & Designer Créatif",
     description:
       "DÉVELOPPEUR FULL-STACK ORIENTÉ IA & AUTOMATISATION",
@@ -104,7 +105,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://issasankara.com",
+    canonical: "https://www.san-kara.site",
   },
   category: "technology",
 };
@@ -129,6 +130,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans">
+        <StructuredData />
         <ThemeProvider>
           <LanguageProvider>
             <SiteContentProvider initialContent={siteContent}>

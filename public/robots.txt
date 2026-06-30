@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://issasankara.com/sitemap.xml
+Sitemap: https://www.san-kara.site/sitemap.xml
 
 # Crawler-delay (optionnel)
 Crawl-delay: 1

@@ -5,7 +5,7 @@ import { MetadataRoute } from "next";
  * Liste toutes les pages du portfolio pour un meilleur référencement
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://issasankara.com";
+  const baseUrl = "https://www.san-kara.site";
   const currentDate = new Date();
 
   return [

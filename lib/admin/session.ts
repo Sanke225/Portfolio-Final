@@ -1,4 +1,3 @@
-import crypto from "crypto";
 import type { NextRequest } from "next/server";
 
 export const ADMIN_COOKIE_NAME = "portfolio-admin-session";
@@ -8,16 +7,32 @@ function getSessionSecret() {
   return process.env.ADMIN_SESSION_SECRET ?? process.env.ADMIN_PASSWORD ?? "dev-admin-session";
 }
 
-function hmac(value: string) {
-  return crypto.createHmac("sha256", getSessionSecret()).update(value).digest("hex");
+// Utilise Web Crypto API (compatible Edge Runtime)
+async function hmac(value: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const keyData = encoder.encode(getSessionSecret());
+  const valueData = encoder.encode(value);
+
+  const key = await crypto.subtle.importKey(
+    "raw",
+    keyData,
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+
+  const signature = await crypto.subtle.sign("HMAC", key, valueData);
+  const hashArray = Array.from(new Uint8Array(signature));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-export function createAdminSessionToken() {
+export async function createAdminSessionToken() {
   const issuedAt = Date.now().toString();
-  return `${issuedAt}.${hmac(issuedAt)}`;
+  const signature = await hmac(issuedAt);
+  return `${issuedAt}.${signature}`;
 }
 
-export function verifyAdminSessionToken(token: string | undefined) {
+export async function verifyAdminSessionToken(token: string | undefined) {
   if (!token) {
     return false;
   }
@@ -27,13 +42,10 @@ export function verifyAdminSessionToken(token: string | undefined) {
     return false;
   }
 
-  const expected = hmac(issuedAt);
+  const expected = await hmac(issuedAt);
 
-  if (signature.length !== expected.length) {
-    return false;
-  }
-
-  if (!crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expected))) {
+  // Timing-safe comparison simple
+  if (signature !== expected) {
     return false;
   }
 
@@ -41,6 +53,6 @@ export function verifyAdminSessionToken(token: string | undefined) {
   return Number.isFinite(age) && age <= SESSION_TTL_MS;
 }
 
-export function isAdminRequest(request: NextRequest) {
-  return verifyAdminSessionToken(request.cookies.get(ADMIN_COOKIE_NAME)?.value);
+export async function isAdminRequest(request: NextRequest) {
+  return await verifyAdminSessionToken(request.cookies.get(ADMIN_COOKIE_NAME)?.value);
 }
